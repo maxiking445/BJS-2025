@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://pmrec0xfxyfs"]
+[gd_scene load_steps=12 format=4 uid="uid://pmrec0xfxyfs"]
 
 [ext_resource type="PackedScene" uid="uid://dvtvx4gd58y64" path="res://character/character.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://b3rjacehncklw" path="res://RecordingManager.tscn" id="1_bah7m"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://vrs34g1lkupr" path="res://objects/lever.tscn" id="4_js7pq"]
 [ext_resource type="PackedScene" uid="uid://bcayrlxleucto" path="res://objects/PressurePlate.tscn" id="5_eu7l1"]
 [ext_resource type="PackedScene" uid="uid://dowypbs3jl17n" path="res://objects/actions/startReplayAction.tscn" id="6_wygdx"]
+[ext_resource type="PackedScene" uid="uid://bh6vay1cp814b" path="res://UI/time.tscn" id="9_fv4w7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6gwx"]
 texture = ExtResource("1_c6gwx")
@@ -130,6 +131,29 @@ position = Vector2(848, 526)
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 offset = Vector2(0, -150)
+
+[node name="UI" type="Control" parent="Character/Camera2D"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -573.0
+offset_top = -484.0
+offset_right = 582.0
+offset_bottom = 161.0
+grow_horizontal = 2
+
+[node name="Time" parent="Character/Camera2D/UI" instance=ExtResource("9_fv4w7")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.002
+anchor_bottom = 0.997
+offset_left = -5.0
+offset_top = 7.0
+offset_right = -5.31006
+offset_bottom = 6.935
+grow_horizontal = 0
+grow_vertical = 1
 
 [node name="WorldLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAkAAAABAAAAAAABAAkAAAACAAAAAAACAAkAAAADAAAAAAADAAkAAAABAAAAAAAEAAkAAAACAAAAAAAFAAkAAAADAAAAAAAGAAkAAAABAAAAAAAHAAkAAAACAAAAAAAIAAkAAAADAAAAAAAJAAkAAAABAAAAAAAKAAkAAAACAAAAAAALAAkAAAADAAAAAAAMAAkAAAABAAAAAAANAAkAAAACAAAAAAAOAAkAAAADAAAAAAAPAAkAAAABAAAAAAAQAAkAAAACAAAAAAARAAkAAAADAAAAAAAOAAUAAAAFAAAAAAAOAAYAAAAFAAEAAAAOAAcAAAAFAAIAAAAOAAgAAAAFAAMAAAAPAAUAAAAGAAAAAAAPAAYAAAAGAAEAAAAPAAcAAAAGAAIAAAAPAAgAAAAGAAMAAAAQAAUAAAAFAAAAAAAQAAYAAAAFAAEAAAAQAAcAAAAFAAIAAAAQAAgAAAAFAAMAAAARAAUAAAAGAAAAAAARAAYAAAAGAAEAAAARAAcAAAAGAAIAAAARAAgAAAAGAAMAAAA=")

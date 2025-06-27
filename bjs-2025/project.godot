@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Enums="*res://Enums.gd"
 TextManager="*res://TextManager.gd"
 Util="*res://Util.gd"
+SignalManager="*res://SignalManager.gd"
 
 [global_group]
 

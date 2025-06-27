@@ -15,5 +15,5 @@ func doAction():
 	recordingManager.ghostChar = instance
 	recordingManager.isRecording = false
 	recordingManager.isReplaying= true
-	
+	SignalManager.reverseTimer.emit()
 	

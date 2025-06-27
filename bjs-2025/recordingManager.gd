@@ -53,6 +53,7 @@ func replay(delta):
 		current_frame += 1
 	else:
 		print("REPLAY FINISHED!")
+		SignalManager.reverseTimer.emit()
 		ghostChar.queue_free()
 		isRecording = true
 		isReplaying = false

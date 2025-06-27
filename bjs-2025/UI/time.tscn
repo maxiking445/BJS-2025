@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh6vay1cp814b"]
+
+[ext_resource type="Script" uid="uid://b1yuhp4cur54" path="res://UI/time.gd" id="1_rdo8p"]
+
+[node name="Time" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rdo8p")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -133.0
+offset_top = 19.0
+offset_right = -11.0
+offset_bottom = 47.0
+grow_horizontal = 0
