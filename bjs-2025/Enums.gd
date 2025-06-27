@@ -1,0 +1,3 @@
+extends Node
+
+enum TEXT_DISPLAY{BACKWARDS, NORMAL, RANDOM}
