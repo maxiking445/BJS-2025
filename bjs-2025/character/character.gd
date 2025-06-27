@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var jump_force := -400.0
 @export var max_fall_speed := 900.0
 var direction = Vector2.ZERO
+var pushForce = 1000
 
 
 func _physics_process(delta):
@@ -29,5 +30,11 @@ func _physics_process(delta):
 			velocity.y = 0
 	
 	move_and_slide()
-
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider() is RigidBody2D:
+			collision.get_collider().apply_central_impulse(-collision.get_normal() * pushForce)
+	
+	
 	

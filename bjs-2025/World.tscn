@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://pmrec0xfxyfs"]
+[gd_scene load_steps=6 format=4 uid="uid://pmrec0xfxyfs"]
 
 [ext_resource type="PackedScene" uid="uid://dvtvx4gd58y64" path="res://character/character.tscn" id="1_2dftf"]
+[ext_resource type="PackedScene" uid="uid://jqiimcka0060" path="res://objects/crate.tscn" id="1_bcbcq"]
 [ext_resource type="Texture2D" uid="uid://by0otjo11xwo0" path="res://assets/tileset.png" id="1_c6gwx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6gwx"]
@@ -108,8 +109,14 @@ sources/0 = SubResource("TileSetAtlasSource_c6gwx")
 
 [node name="World" type="Node2D"]
 
+[node name="Crate" parent="." instance=ExtResource("1_bcbcq")]
+position = Vector2(361, 453)
+
 [node name="Character" parent="." instance=ExtResource("1_2dftf")]
-position = Vector2(322, 248)
+position = Vector2(113, 470)
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+offset = Vector2(0, -150)
 
 [node name="WorldLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAkAAAABAAAAAAABAAkAAAACAAAAAAACAAkAAAADAAAAAAADAAkAAAABAAAAAAAEAAkAAAACAAAAAAAFAAkAAAADAAAAAAAGAAkAAAABAAAAAAAHAAkAAAACAAAAAAAIAAkAAAADAAAAAAAJAAkAAAABAAAAAAAKAAkAAAACAAAAAAALAAkAAAADAAAAAAAMAAkAAAABAAAAAAANAAkAAAACAAAAAAAOAAkAAAADAAAAAAAPAAkAAAABAAAAAAAQAAkAAAACAAAAAAARAAkAAAADAAAAAAAOAAUAAAAFAAAAAAAOAAYAAAAFAAEAAAAOAAcAAAAFAAIAAAAOAAgAAAAFAAMAAAAPAAUAAAAGAAAAAAAPAAYAAAAGAAEAAAAPAAcAAAAGAAIAAAAPAAgAAAAGAAMAAAAQAAUAAAAFAAAAAAAQAAYAAAAFAAEAAAAQAAcAAAAFAAIAAAAQAAgAAAAFAAMAAAARAAUAAAAGAAAAAAARAAYAAAAGAAEAAAARAAcAAAAGAAIAAAARAAgAAAAGAAMAAAA=")
