@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dvtvx4gd58y64"]
+[gd_scene load_steps=57 format=3 uid="uid://dvtvx4gd58y64"]
 
 [ext_resource type="Script" uid="uid://cgptvapg8lgol" path="res://character/character.gd" id="1_1l1n4"]
 [ext_resource type="Texture2D" uid="uid://n8r2fulbqt5l" path="res://assets/Idel Animation 48x48.png" id="3_tgjim"]
@@ -9,13 +9,19 @@
 [ext_resource type="Script" uid="uid://0amfc6hc21tq" path="res://character/animated_sprite_2d.gd" id="7_tgjim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf0e5"]
-size = Vector2(114, 99)
+size = Vector2(50, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1l1n4"]
-size = Vector2(57, 28)
+size = Vector2(15.125, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgjim"]
+size = Vector2(15, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy5t8"]
+size = Vector2(27, 13.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugqs2"]
-size = Vector2(56, 25)
+size = Vector2(38, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8brn5"]
 atlas = ExtResource("3_tgjim")
@@ -351,28 +357,42 @@ collision_mask = 7
 script = ExtResource("1_1l1n4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -5.5)
+position = Vector2(-7, -5.5)
 shape = SubResource("RectangleShape2D_yf0e5")
 
 [node name="RightArea" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(57, 2)
+position = Vector2(25.4375, 0.5)
 shape = SubResource("RectangleShape2D_1l1n4")
 
 [node name="LeftArea" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
-position = Vector2(-61, 1)
+position = Vector2(-39.5, 1.5)
+shape = SubResource("RectangleShape2D_tgjim")
+
+[node name="RightPullArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPullArea"]
+position = Vector2(34.5, 3.75)
+shape = SubResource("RectangleShape2D_wy5t8")
+
+[node name="LeftPullArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPullArea"]
+position = Vector2(-50, 2.5)
 shape = SubResource("RectangleShape2D_ugqs2")
 
 [node name="RightPullPoint" type="Marker2D" parent="."]
-position = Vector2(78, -8)
+position = Vector2(20, 0)
 
 [node name="LeftPullPoint" type="Marker2D" parent="."]
-position = Vector2(-85, -2)
+position = Vector2(-42, -1)
 
 [node name="TextPosition" type="Marker2D" parent="."]
 position = Vector2(0, -88)
@@ -381,6 +401,7 @@ position = Vector2(0, -88)
 position = Vector2(-4, -4)
 scale = Vector2(1.8125, 1.95833)
 sprite_frames = SubResource("SpriteFrames_dg8ty")
-animation = &"pull"
-frame_progress = 0.782547
+animation = &"push"
+frame = 3
+frame_progress = 0.25022
 script = ExtResource("7_tgjim")

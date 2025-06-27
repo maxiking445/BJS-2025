@@ -8,28 +8,37 @@ enum FACE {RIGHT, LEFT}
 @export var jump_force := -400.0
 @export var max_fall_speed := 900.0
 var direction = Vector2.ZERO
-var pushForce = 1000
-
+var pushForce = 200
+var pullforce = 100
 var inPullMode: bool
 var attachedObject: RigidBody2D
+var collisionArea: Area2D = null
 var pullArea: Area2D = null
 var pullpoint: Marker2D = null
 var currentFace: FACE = FACE.RIGHT
 var isPushing= false
 
 func _ready() -> void:
+	collisionArea = $RightArea
+	pullArea = $RightPullAreaa
 	TextManager.createThought($TextPosition, "Where am i?")
 
 func _physics_process(delta):
 	var x_direction := 0
 	if Input.is_action_pressed("LEFT"):
 		currentFace =  FACE.LEFT
+		collisionArea = $LeftArea
+		if !attachedObject:
+			pullArea = $LeftPullArea
 		if !inPullMode:
 			x_direction = -1
 		elif canWalkIntoDirection(FACE.LEFT):
 			x_direction = -1
 	elif Input.is_action_pressed("RIGHT"):
 		currentFace =  FACE.RIGHT
+		collisionArea = $RightArea
+		if !attachedObject:
+			pullArea = $RightPullArea
 		if !inPullMode:
 			x_direction = 1
 		elif canWalkIntoDirection(FACE.RIGHT):
@@ -45,36 +54,37 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("PULL"):
 		if inPullMode:
 			inPullMode = false
+			attachedObject = null
 		else:
 			inPullMode = true
 			if currentFace == FACE.RIGHT:
-				pullArea = $RightArea
 				pullpoint = $RightPullPoint
 				setPullObject()
 			else:
-				pullArea = $LeftArea
 				pullpoint = $LeftPullPoint
 				setPullObject()
 			
 	if inPullMode:
-		var target_x = pullpoint.global_position.x
-		var current_pos = attachedObject.global_position
-		attachedObject.global_position.x = move_toward(current_pos.x, target_x, 300 * delta)
+		attachedObject.global_position.x = pullpoint.global_position.x
 	else:
-		pullArea
-		for i in get_slide_collision_count():
-			isPushing = false
-			var collision = get_slide_collision(i)
-			if collision.get_collider() is RigidBody2D:
-					isPushing = true
-					collision.get_collider().apply_central_impulse(-collision.get_normal() * pushForce)
+		var test: RigidBody2D = getPushObject()
+		isPushing = false
+		if test:
+			isPushing = true
+			var direction = (test.global_position - global_position).normalized()
+			direction.y = 0 
+			direction = direction.normalized()  
+			test.apply_central_impulse(direction * pushForce)
 					
 func canWalkIntoDirection(direction: FACE)-> bool:
+	print(pullArea.name)
 	if direction == FACE.LEFT:
-		return pullArea.name == "RightArea"
+		return pullArea.name == "RightPullArea"
 	if direction == FACE.RIGHT:
-		return pullArea.name == "LelftArea"
+		return pullArea.name == "LeftPullArea"
 	return false
+	
+	
 func handleJump(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -90,6 +100,14 @@ func setPullObject():
 		attachedObject = getPullObject()
 	else:
 		inPullMode = false	
+
+func getPushObject()-> Node2D:
+	if isAreaCollidingWithCrate(collisionArea):
+			var bodies:  Array[Node2D] = collisionArea.get_overlapping_bodies()
+			for body in bodies:
+				if body is RigidBody2D:
+					return body
+	return null		
 		
 func getPullObject()-> Node2D:
 	if isAreaCollidingWithCrate(pullArea):
