@@ -1,11 +1,17 @@
 extends Node2D
+class_name PressurePlate 
 
 @export var sink_amount := 5.0   
 @export var sink_duration := 0.1       
 @export var riseTimer : float = 2
+@export var keepPressed: bool
    
 var is_pressed := false
 var original_position := Vector2.ZERO
+
+signal loose
+signal pressed
+signal flip
 
 func _ready() -> void:
 	$RiseTImer.wait_time = riseTimer
@@ -19,11 +25,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func sink() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "position", original_position + Vector2(0, sink_amount), sink_duration)
-	$RiseTImer.start()
+	if !keepPressed:
+		$RiseTImer.start()
+	pressed.emit()
 
 func rise() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "position", original_position, sink_duration)
+	loose.emit()
 
 
 func _on_rise_t_imer_timeout() -> void:
@@ -39,3 +48,12 @@ func isSomethingOnButton()-> bool:
 			return true
 	return false	
 		
+
+
+func _on_flip() -> void:
+	if is_pressed:
+		is_pressed = false
+		rise()
+	else:
+		is_pressed = true
+		sink()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://pmrec0xfxyfs"]
+[gd_scene load_steps=9 format=4 uid="uid://pmrec0xfxyfs"]
 
 [ext_resource type="PackedScene" uid="uid://dvtvx4gd58y64" path="res://character/character.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://jqiimcka0060" path="res://objects/crate.tscn" id="1_bcbcq"]
 [ext_resource type="Texture2D" uid="uid://by0otjo11xwo0" path="res://assets/tileset.png" id="1_c6gwx"]
+[ext_resource type="PackedScene" uid="uid://crry06uxf1q2w" path="res://objects/StoneDoor.tscn" id="2_p1v5b"]
 [ext_resource type="PackedScene" uid="uid://vrs34g1lkupr" path="res://objects/lever.tscn" id="4_js7pq"]
 [ext_resource type="PackedScene" uid="uid://bcayrlxleucto" path="res://objects/PressurePlate.tscn" id="5_eu7l1"]
 
@@ -113,11 +114,15 @@ sources/0 = SubResource("TileSetAtlasSource_c6gwx")
 
 [node name="World" type="Node2D"]
 
+[node name="StoneDoor" parent="." node_paths=PackedStringArray("openDoorButton") instance=ExtResource("2_p1v5b")]
+position = Vector2(743, 483)
+openDoorButton = NodePath("../PressurePlate")
+
 [node name="Crate" parent="." instance=ExtResource("1_bcbcq")]
 position = Vector2(361, 453)
 
 [node name="Crate2" parent="." instance=ExtResource("1_bcbcq")]
-position = Vector2(722, 443)
+position = Vector2(369, 282)
 
 [node name="Character" parent="." instance=ExtResource("1_2dftf")]
 position = Vector2(582, 478)

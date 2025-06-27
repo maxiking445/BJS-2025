@@ -36,6 +36,7 @@ shape = SubResource("RectangleShape2D_wlcij")
 [node name="RiseTImer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="flip" from="." to="." method="_on_flip"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="RiseTImer" to="." method="_on_rise_t_imer_timeout"]
