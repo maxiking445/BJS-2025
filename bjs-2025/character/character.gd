@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+enum FACE {RIGHT, LEFT}
+
 @export var speed: float = 200
 @export var gravity := 1000.0
 @export var jump_force := -400.0
@@ -7,19 +9,54 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 var pushForce = 1000
 
+var inPullMode: bool
+var attachedObject: RigidBody2D
+var pullArea: Area2D = null
+var pullpoint: Marker2D = null
+var currentFace: FACE = FACE.RIGHT
 
 func _physics_process(delta):
 	var x_direction := 0
 	if Input.is_action_pressed("LEFT"):
 		x_direction = -1
+		currentFace =  FACE.LEFT
 	elif Input.is_action_pressed("RIGHT"):
 		x_direction = 1
+		currentFace =  FACE.RIGHT
 	else:
 		x_direction = 0
 	
 	velocity.x = x_direction * speed
 	
+	handleJump(delta)
 	
+	move_and_slide()
+	if Input.is_action_just_pressed("PULL"):
+		if inPullMode:
+			inPullMode = false
+		else:
+			inPullMode = true
+			if currentFace == FACE.RIGHT:
+				pullArea = $RightArea
+				pullpoint = $RightPullPoint
+				setPullObject()
+			else:
+				pullArea = $LeftArea
+				pullpoint = $LeftPullPoint
+				setPullObject()
+			
+	if inPullMode:
+		var target_x = pullpoint.global_position.x
+		var current_pos = attachedObject.global_position
+		attachedObject.global_position.x = move_toward(current_pos.x, target_x, 300 * delta)
+
+	else:
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_collider() is RigidBody2D:
+					collision.get_collider().apply_central_impulse(-collision.get_normal() * pushForce)
+
+func handleJump(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		velocity.y = min(velocity.y, max_fall_speed)
@@ -29,12 +66,19 @@ func _physics_process(delta):
 		else: 
 			velocity.y = 0
 	
-	move_and_slide()
+func setPullObject():
+	if getPullObject():
+		attachedObject = getPullObject()
+	else:
+		inPullMode = false	
+		
+func getPullObject()-> Node2D:
+	if isAreaCollidingWithCrate(pullArea):
+			var bodies:  Array[Node2D] = pullArea.get_overlapping_bodies()
+			for body in bodies:
+				if body is RigidBody2D:
+					return body
+	return null				
 	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if collision.get_collider() is RigidBody2D:
-			collision.get_collider().apply_central_impulse(-collision.get_normal() * pushForce)
-	
-	
-	
+func isAreaCollidingWithCrate(area: Area2D) -> bool:
+	return area.has_overlapping_bodies()
