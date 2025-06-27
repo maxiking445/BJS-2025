@@ -1,12 +1,21 @@
 extends Control
+class_name ShakyText
 
 @export var shake_intensity: int = 2
 @export var text: String = "UNDEFINED"
 @export var lifeTime: float = 2
 @export var text_display: Enums.TEXT_DISPLAY = Enums.TEXT_DISPLAY.NORMAL
+@export var FlyTextIn : bool = false
 var original_position = Vector2.ZERO
 
 func _ready() -> void:
+	if FlyTextIn:
+		setupFlyTextIn()
+	modulate.a = 0
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, 0.5) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_IN)
 	$LifeTimer.wait_time = lifeTime
 	$LifeTimer.start()
 	
@@ -18,6 +27,14 @@ func _ready() -> void:
 	else:
 		$Label.text = text
 
+func setupFlyTextIn():
+	var start_pos = position
+	position.y += 50  
+	var tween = create_tween()
+	tween.tween_property(self, "position:y", start_pos.y, 0.5) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_OUT)
+	
 
 func _process(delta: float) -> void:
 	var shake_offset = Vector2(

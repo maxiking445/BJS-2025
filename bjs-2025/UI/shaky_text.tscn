@@ -11,11 +11,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a7muy")
 text_display = 2
+FlyTextIn = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -47.0
+offset_top = -11.0
+offset_right = 45.0
+offset_bottom = 12.0
 text = "UNDEFINED"
 
 [node name="LifeTimer" type="Timer" parent="."]

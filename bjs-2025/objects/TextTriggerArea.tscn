@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgelv038mujki"]
+
+[ext_resource type="Script" uid="uid://bal2cjr3jmvnv" path="res://objects/text_trigger_area.gd" id="1_hpx2w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grl44"]
+size = Vector2(77, 129)
+
+[node name="TextTriggerArea" type="Area2D"]
+script = ExtResource("1_hpx2w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(38, 65)
+shape = SubResource("RectangleShape2D_grl44")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

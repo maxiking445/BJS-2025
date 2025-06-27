@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Character
 
 enum FACE {RIGHT, LEFT}
 
@@ -14,6 +15,9 @@ var attachedObject: RigidBody2D
 var pullArea: Area2D = null
 var pullpoint: Marker2D = null
 var currentFace: FACE = FACE.RIGHT
+
+func _ready() -> void:
+	TextManager.createThought($TextPosition, "Where am i?")
 
 func _physics_process(delta):
 	var x_direction := 0
@@ -82,3 +86,6 @@ func getPullObject()-> Node2D:
 	
 func isAreaCollidingWithCrate(area: Area2D) -> bool:
 	return area.has_overlapping_bodies()
+
+func getTextPosition()-> Marker2D:
+	return $TextPosition

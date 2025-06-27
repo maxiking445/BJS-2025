@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Enums="*res://Enums.gd"
+TextManager="*res://TextManager.gd"
+Util="*res://Util.gd"
 
 [input]
 
