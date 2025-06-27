@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://pmrec0xfxyfs"]
+[gd_scene load_steps=8 format=4 uid="uid://pmrec0xfxyfs"]
 
 [ext_resource type="PackedScene" uid="uid://dvtvx4gd58y64" path="res://character/character.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://jqiimcka0060" path="res://objects/crate.tscn" id="1_bcbcq"]
 [ext_resource type="Texture2D" uid="uid://by0otjo11xwo0" path="res://assets/tileset.png" id="1_c6gwx"]
 [ext_resource type="PackedScene" uid="uid://vrs34g1lkupr" path="res://objects/lever.tscn" id="4_js7pq"]
+[ext_resource type="PackedScene" uid="uid://bcayrlxleucto" path="res://objects/PressurePlate.tscn" id="5_eu7l1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6gwx"]
 texture = ExtResource("1_c6gwx")
@@ -130,3 +131,6 @@ tile_set = SubResource("TileSet_2dftf")
 
 [node name="Lever" parent="." instance=ExtResource("4_js7pq")]
 position = Vector2(129, 497)
+
+[node name="PressurePlate" parent="." instance=ExtResource("5_eu7l1")]
+position = Vector2(668, 567)
