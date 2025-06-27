@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=4 uid="uid://pmrec0xfxyfs"]
+[gd_scene load_steps=11 format=4 uid="uid://pmrec0xfxyfs"]
 
 [ext_resource type="PackedScene" uid="uid://dvtvx4gd58y64" path="res://character/character.tscn" id="1_2dftf"]
+[ext_resource type="PackedScene" uid="uid://b3rjacehncklw" path="res://RecordingManager.tscn" id="1_bah7m"]
 [ext_resource type="PackedScene" uid="uid://jqiimcka0060" path="res://objects/crate.tscn" id="1_bcbcq"]
 [ext_resource type="Texture2D" uid="uid://by0otjo11xwo0" path="res://assets/tileset.png" id="1_c6gwx"]
 [ext_resource type="PackedScene" uid="uid://crry06uxf1q2w" path="res://objects/StoneDoor.tscn" id="2_p1v5b"]
 [ext_resource type="PackedScene" uid="uid://vrs34g1lkupr" path="res://objects/lever.tscn" id="4_js7pq"]
 [ext_resource type="PackedScene" uid="uid://bcayrlxleucto" path="res://objects/PressurePlate.tscn" id="5_eu7l1"]
+[ext_resource type="PackedScene" uid="uid://dowypbs3jl17n" path="res://objects/actions/startReplayAction.tscn" id="6_wygdx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6gwx"]
 texture = ExtResource("1_c6gwx")
@@ -114,18 +116,17 @@ sources/0 = SubResource("TileSetAtlasSource_c6gwx")
 
 [node name="World" type="Node2D"]
 
+[node name="RecordingManager" parent="." instance=ExtResource("1_bah7m")]
+
 [node name="StoneDoor" parent="." node_paths=PackedStringArray("openDoorButton") instance=ExtResource("2_p1v5b")]
-position = Vector2(743, 483)
+position = Vector2(582, 485)
 openDoorButton = NodePath("../PressurePlate")
 
 [node name="Crate" parent="." instance=ExtResource("1_bcbcq")]
-position = Vector2(361, 453)
-
-[node name="Crate2" parent="." instance=ExtResource("1_bcbcq")]
-position = Vector2(369, 282)
+position = Vector2(360, 488)
 
 [node name="Character" parent="." instance=ExtResource("1_2dftf")]
-position = Vector2(582, 478)
+position = Vector2(848, 526)
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 offset = Vector2(0, -150)
@@ -134,8 +135,11 @@ offset = Vector2(0, -150)
 tile_map_data = PackedByteArray("AAAAAAkAAAABAAAAAAABAAkAAAACAAAAAAACAAkAAAADAAAAAAADAAkAAAABAAAAAAAEAAkAAAACAAAAAAAFAAkAAAADAAAAAAAGAAkAAAABAAAAAAAHAAkAAAACAAAAAAAIAAkAAAADAAAAAAAJAAkAAAABAAAAAAAKAAkAAAACAAAAAAALAAkAAAADAAAAAAAMAAkAAAABAAAAAAANAAkAAAACAAAAAAAOAAkAAAADAAAAAAAPAAkAAAABAAAAAAAQAAkAAAACAAAAAAARAAkAAAADAAAAAAAOAAUAAAAFAAAAAAAOAAYAAAAFAAEAAAAOAAcAAAAFAAIAAAAOAAgAAAAFAAMAAAAPAAUAAAAGAAAAAAAPAAYAAAAGAAEAAAAPAAcAAAAGAAIAAAAPAAgAAAAGAAMAAAAQAAUAAAAFAAAAAAAQAAYAAAAFAAEAAAAQAAcAAAAFAAIAAAAQAAgAAAAFAAMAAAARAAUAAAAGAAAAAAARAAYAAAAGAAEAAAARAAcAAAAGAAIAAAARAAgAAAAGAAMAAAA=")
 tile_set = SubResource("TileSet_2dftf")
 
-[node name="Lever" parent="." instance=ExtResource("4_js7pq")]
+[node name="Lever" parent="." node_paths=PackedStringArray("action") instance=ExtResource("4_js7pq")]
 position = Vector2(129, 497)
+action = NodePath("SpawnGhostAction")
+
+[node name="SpawnGhostAction" parent="Lever" instance=ExtResource("6_wygdx")]
 
 [node name="PressurePlate" parent="." instance=ExtResource("5_eu7l1")]
 position = Vector2(668, 567)

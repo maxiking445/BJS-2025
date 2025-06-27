@@ -7,6 +7,7 @@ enum FACE {RIGHT, LEFT}
 @export var gravity := 1000.0
 @export var jump_force := -400.0
 @export var max_fall_speed := 900.0
+
 var direction = Vector2.ZERO
 var pushForce = 200
 var pullforce = 100
@@ -70,14 +71,14 @@ func _physics_process(delta):
 	if inPullMode:
 		attachedObject.global_position.x = pullpoint.global_position.x
 	else:
-		var test: RigidBody2D = getPushObject()
+		var pushedObject: RigidBody2D = getPushObject()
 		isPushing = false
-		if test:
+		if pushedObject:
 			isPushing = true
-			var direction = (test.global_position - global_position).normalized()
+			var direction = (pushedObject.global_position - global_position).normalized()
 			direction.y = 0 
 			direction = direction.normalized()  
-			test.apply_central_impulse(direction * pushForce)
+			pushedObject.apply_central_impulse(direction * pushForce)
 					
 func canWalkIntoDirection(direction: FACE)-> bool:
 	if direction == FACE.LEFT:
@@ -124,3 +125,8 @@ func isAreaCollidingWithCrate(area: Area2D) -> bool:
 
 func getTextPosition()-> Marker2D:
 	return $TextPosition
+
+func getCurrentAnimation()-> String:
+	return $AnimatedSprite2D.animation
+
+	

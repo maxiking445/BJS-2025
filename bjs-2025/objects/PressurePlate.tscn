@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wlcij"]
 size = Vector2(21, 4)
 
-[node name="PressurePlate" type="Node2D"]
+[node name="PressurePlate" type="Node2D" groups=["Plate"]]
 script = ExtResource("1_hjmrp")
 
 [node name="ButtonMesh" type="MeshInstance2D" parent="."]

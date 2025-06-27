@@ -1,13 +1,13 @@
 extends Node2D
 class_name PressurePlate 
 
-@export var sink_amount := 5.0   
-@export var sink_duration := 0.1       
+@export var sink_amount = 5.0   
+@export var sink_duration = 0.1       
 @export var riseTimer : float = 2
 @export var keepPressed: bool
    
-var is_pressed := false
-var original_position := Vector2.ZERO
+var is_pressed = false
+var original_position = Vector2.ZERO
 
 signal loose
 signal pressed
@@ -57,3 +57,12 @@ func _on_flip() -> void:
 	else:
 		is_pressed = true
 		sink()
+		
+func replay(isPressed: bool):
+	if self.is_pressed == isPressed:
+		return
+	else:
+		flip.emit()
+	
+	
+	

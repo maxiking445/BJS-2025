@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://crvkkiwpaprgk"]
+
+[ext_resource type="PackedScene" uid="uid://dvtvx4gd58y64" path="res://character/character.tscn" id="1_8oj4f"]
+[ext_resource type="Script" uid="uid://dp5mdjkdboncv" path="res://ghost_character.gd" id="2_bylaa"]
+
+[node name="GhostCharacter" instance=ExtResource("1_8oj4f")]
+script = ExtResource("2_bylaa")
+
+[node name="AnimatedSprite2D" parent="." index="8"]
+modulate = Color(0.854902, 0.854902, 0.854902, 0.443137)

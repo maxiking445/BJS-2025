@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dowypbs3jl17n"]
+
+[ext_resource type="PackedScene" uid="uid://cuy3t504v15k1" path="res://objects/actions/action.tscn" id="1_4d2ph"]
+[ext_resource type="Script" uid="uid://dud1dvef7ygmm" path="res://objects/actions/startReplayAction.gd" id="2_dnh2j"]
+
+[node name="StartReplayAction" instance=ExtResource("1_4d2ph")]
+script = ExtResource("2_dnh2j")

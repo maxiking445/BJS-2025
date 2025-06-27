@@ -21,6 +21,11 @@ Enums="*res://Enums.gd"
 TextManager="*res://TextManager.gd"
 Util="*res://Util.gd"
 
+[global_group]
+
+Object=""
+Plate=""
+
 [input]
 
 LEFT={
