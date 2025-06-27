@@ -13,13 +13,16 @@ script = ExtResource("1_a7muy")
 text_display = 2
 FlyTextIn = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = -47.0
-offset_top = -11.0
-offset_right = 45.0
-offset_bottom = 12.0
+offset_left = -81.0
+offset_top = -30.0
+offset_right = 81.0
+offset_bottom = 62.0
 text = "UNDEFINED"
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
 
 [node name="LifeTimer" type="Timer" parent="."]
 one_shot = true

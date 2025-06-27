@@ -21,7 +21,10 @@ var isPushing= false
 func _ready() -> void:
 	collisionArea = $RightArea
 	pullArea = $RightPullAreaa
-	TextManager.createThought($TextPosition, "Where am i?")
+	createThought("Where am i?")
+
+func createThought(text: String, showOnlyOneText= true):
+	TextManager.createThought($TextPosition,text, showOnlyOneText)
 
 func _physics_process(delta):
 	var x_direction := 0
@@ -77,7 +80,6 @@ func _physics_process(delta):
 			test.apply_central_impulse(direction * pushForce)
 					
 func canWalkIntoDirection(direction: FACE)-> bool:
-	print(pullArea.name)
 	if direction == FACE.LEFT:
 		return pullArea.name == "RightPullArea"
 	if direction == FACE.RIGHT:
