@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://pmrec0xfxyfs"]
+[gd_scene load_steps=29 format=4 uid="uid://pmrec0xfxyfs"]
 
 [ext_resource type="PackedScene" uid="uid://dvtvx4gd58y64" path="res://character/character.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://b3rjacehncklw" path="res://RecordingManager.tscn" id="1_bah7m"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ovuy72356yjw" path="res://objects/actions/show_thought_action.tscn" id="8_gn8l5"]
 [ext_resource type="PackedScene" uid="uid://bh6vay1cp814b" path="res://UI/time.tscn" id="9_fv4w7"]
 [ext_resource type="AudioStream" uid="uid://darqh8slm81kn" path="res://sounds/heartbeat.mp3" id="11_kva58"]
+[ext_resource type="PackedScene" uid="uid://crdcawn3qfwjl" path="res://objects/fireball/fireball.tscn" id="12_f5c0m"]
 [ext_resource type="PackedScene" uid="uid://bgelv038mujki" path="res://objects/ActionTriggerArea.tscn" id="13_ee7l0"]
 [ext_resource type="PackedScene" uid="uid://crld3xrax3fn7" path="res://objects/actions/show_text_action.tscn" id="14_gn8l5"]
 [ext_resource type="Texture2D" uid="uid://bpvcvts55ueg3" path="res://assets/Bed.png" id="16_0to5b"]
@@ -22,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://b20rgv2kjdn8k" path="res://assets/Thumbachka2.png" id="19_ydbc3"]
 [ext_resource type="Script" uid="uid://cpw7n0cp67i4y" path="res://camera_2d.gd" id="20_0to5b"]
 [ext_resource type="Texture2D" uid="uid://drn2d6xu2k11b" path="res://assets/Lampa.png" id="20_aj1ai"]
+[ext_resource type="PackedScene" uid="uid://cugcp0e0lygk2" path="res://objects/actions/fire_ball_action.tscn" id="20_d7dfr"]
 [ext_resource type="PackedScene" uid="uid://bpwjfqajbq8gl" path="res://UI/eventList.tscn" id="23_jyqkj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6gwx"]
@@ -157,7 +159,6 @@ action = NodePath("showThoughtAction")
 [node name="showThoughtAction" parent="Lever/LeverTriggerArea" node_paths=PackedStringArray("character") instance=ExtResource("8_gn8l5")]
 character = NodePath("../../../Character")
 text = "Oh a Lever what happens if I press it?"
-showItOnce = true
 
 [node name="StartReplayAction" parent="Lever" instance=ExtResource("6_wygdx")]
 
@@ -293,7 +294,6 @@ action = NodePath("showThoughtAction")
 [node name="showThoughtAction" parent="FirstPuzzle/TextTrigger4" node_paths=PackedStringArray("character") instance=ExtResource("8_gn8l5")]
 character = NodePath("../../../Character")
 text = "Who did this?"
-showItOnce = true
 
 [node name="TextTrigger5" parent="FirstPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
 position = Vector2(2073, 506)
@@ -329,6 +329,195 @@ shakeIntensity = 4
 position = Vector2(145, 179)
 
 [node name="SecondPuzzle" type="Node2D" parent="."]
+
+[node name="PressurePlate" parent="SecondPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("5_eu7l1")]
+position = Vector2(3792, 629)
+action = NodePath("FireBallAction")
+
+[node name="FireBallAction" parent="SecondPuzzle/PressurePlate" instance=ExtResource("20_d7dfr")]
+
+[node name="Fireball" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(319, -334)
+
+[node name="Fireball2" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(349, -338)
+
+[node name="Fireball3" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(395, -334)
+
+[node name="Fireball4" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(425, -338)
+
+[node name="Fireball5" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(457, -337)
+
+[node name="Fireball6" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(487, -341)
+
+[node name="Fireball7" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(533, -337)
+
+[node name="Fireball8" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(563, -341)
+
+[node name="Fireball9" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(589, -339)
+
+[node name="Fireball10" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(619, -343)
+
+[node name="Fireball11" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(665, -339)
+
+[node name="Fireball12" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(695, -343)
+
+[node name="Fireball13" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(727, -342)
+
+[node name="Fireball14" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(754, -340)
+
+[node name="Fireball15" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(784, -344)
+
+[node name="Fireball16" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(830, -340)
+
+[node name="Fireball17" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(860, -344)
+
+[node name="Fireball18" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(892, -343)
+
+[node name="Fireball19" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(922, -347)
+
+[node name="Fireball20" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(968, -343)
+
+[node name="Fireball21" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(998, -347)
+
+[node name="Fireball22" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(1024, -345)
+
+[node name="Fireball23" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(1054, -349)
+
+[node name="Fireball24" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(1100, -345)
+
+[node name="Fireball25" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(1130, -349)
+
+[node name="Fireball26" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(1162, -348)
+
+[node name="Fireball27" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(244, -334)
+
+[node name="Fireball28" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(274, -338)
+
+[node name="Fireball29" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(320, -334)
+
+[node name="Fireball30" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(350, -338)
+
+[node name="Fireball31" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(382, -337)
+
+[node name="Fireball32" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(412, -341)
+
+[node name="Fireball33" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(458, -337)
+
+[node name="Fireball34" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(488, -341)
+
+[node name="Fireball35" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(514, -339)
+
+[node name="Fireball36" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(544, -343)
+
+[node name="Fireball37" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(590, -339)
+
+[node name="Fireball38" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(620, -343)
+
+[node name="Fireball39" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(652, -342)
+
+[node name="Fireball40" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(679, -340)
+
+[node name="Fireball41" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(709, -344)
+
+[node name="Fireball42" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(755, -340)
+
+[node name="Fireball43" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(785, -344)
+
+[node name="Fireball44" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(817, -343)
+
+[node name="Fireball45" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(847, -347)
+
+[node name="Fireball46" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(893, -343)
+
+[node name="Fireball47" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(923, -347)
+
+[node name="Fireball48" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(949, -345)
+
+[node name="Fireball49" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(979, -349)
+
+[node name="Fireball50" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(1025, -345)
+
+[node name="Fireball51" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(1055, -349)
+
+[node name="Fireball52" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(1087, -348)
+
+[node name="Fireball53" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(72, -328)
+
+[node name="Fireball54" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(102, -332)
+
+[node name="Fireball55" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(148, -328)
+
+[node name="Fireball56" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(178, -332)
+
+[node name="Fireball57" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(210, -331)
+
+[node name="Fireball58" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(240, -335)
+
+[node name="Fireball59" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(286, -331)
+
+[node name="Fireball60" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(316, -335)
+
+[node name="Fireball61" parent="SecondPuzzle/PressurePlate/FireBallAction" instance=ExtResource("12_f5c0m")]
+position = Vector2(342, -333)
 
 [node name="End" type="Node2D" parent="."]
 

@@ -405,3 +405,5 @@ animation = &"push"
 frame = 3
 frame_progress = 0.25022
 script = ExtResource("7_tgjim")
+
+[connection signal="die" from="." to="." method="_on_die"]

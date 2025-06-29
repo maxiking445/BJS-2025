@@ -19,6 +19,8 @@ var pullpoint: Marker2D = null
 var currentFace: FACE = FACE.RIGHT
 var isPushing= false
 
+
+@onready var respawn_scene = load("res://UI/RespawnScene.tscn")
 signal die
 
 func _ready() -> void:
@@ -152,3 +154,8 @@ func getCurrentAnimation()-> String:
 	return $AnimatedSprite2D.animation
 
 	
+
+
+func _on_die() -> void:
+	var respawn_instance = respawn_scene.instantiate()
+	$Camera2D/UI.add_child(respawn_instance)
