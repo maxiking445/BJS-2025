@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0gvuoo6jh7x"]
+
+[ext_resource type="Script" uid="uid://cxaxrojtwttey" path="res://UI/event_item.gd" id="1_3a6px"]
+[ext_resource type="Texture2D" uid="uid://dsh0pdolmqv13" path="res://assets/icons8-ok-48.png" id="2_kfj4p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3a6px"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_kfj4p"]
+font_size = 10
+
+[node name="EventItem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+script = ExtResource("1_3a6px")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST"
+label_settings = SubResource("LabelSettings_3a6px")
+
+[node name="TimeLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "TIME"
+label_settings = SubResource("LabelSettings_kfj4p")
+
+[node name="CheckIcon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+texture = ExtResource("2_kfj4p")
+expand_mode = 1
+stretch_mode = 5

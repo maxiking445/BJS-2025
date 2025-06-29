@@ -1,6 +1,11 @@
 extends Action
 
 @export var pressurePlate: PressurePlate
+@export var isPressed: bool = false
+
 
 func doAction():
-	pressurePlate.sink()
+	if !isPressed:
+		isPressed = true
+		pressurePlate.sink()
+		pressurePlate.sendPressedEvent = false

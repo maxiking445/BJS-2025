@@ -5,3 +5,4 @@
 
 [node name="PressPressurePlateAction" instance=ExtResource("1_7vlo8")]
 script = ExtResource("2_mrjdc")
+isPressed = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://pmrec0xfxyfs"]
+[gd_scene load_steps=27 format=4 uid="uid://pmrec0xfxyfs"]
 
 [ext_resource type="PackedScene" uid="uid://dvtvx4gd58y64" path="res://character/character.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://b3rjacehncklw" path="res://RecordingManager.tscn" id="1_bah7m"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://b20rgv2kjdn8k" path="res://assets/Thumbachka2.png" id="19_ydbc3"]
 [ext_resource type="Script" uid="uid://cpw7n0cp67i4y" path="res://camera_2d.gd" id="20_0to5b"]
 [ext_resource type="Texture2D" uid="uid://drn2d6xu2k11b" path="res://assets/Lampa.png" id="20_aj1ai"]
+[ext_resource type="PackedScene" uid="uid://bpwjfqajbq8gl" path="res://UI/eventList.tscn" id="23_jyqkj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6gwx"]
 texture = ExtResource("1_c6gwx")
@@ -156,6 +157,7 @@ action = NodePath("showThoughtAction")
 [node name="showThoughtAction" parent="Lever/LeverTriggerArea" node_paths=PackedStringArray("character") instance=ExtResource("8_gn8l5")]
 character = NodePath("../../../Character")
 text = "Oh a Lever what happens if I press it?"
+showItOnce = true
 
 [node name="StartReplayAction" parent="Lever" instance=ExtResource("6_wygdx")]
 
@@ -244,19 +246,94 @@ sink_amount = 200
 position = Vector2(3721, 630)
 riseTimer = 10.0
 
-[node name="ActionTriggerArea" parent="FirstPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
+[node name="PressureTigger" parent="FirstPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
 position = Vector2(2777, 506)
 action = NodePath("PressPressurePlateAction")
 
-[node name="PressPressurePlateAction" parent="FirstPuzzle/ActionTriggerArea" node_paths=PackedStringArray("pressurePlate") instance=ExtResource("19_5j71u")]
+[node name="PressPressurePlateAction" parent="FirstPuzzle/PressureTigger" node_paths=PackedStringArray("pressurePlate") instance=ExtResource("19_5j71u")]
 pressurePlate = NodePath("../../PressurePlate")
+
+[node name="TextTrigger" parent="FirstPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
+position = Vector2(2395, 503)
+action = NodePath("ShowTextAction")
+
+[node name="ShowTextAction" parent="FirstPuzzle/TextTrigger" instance=ExtResource("14_gn8l5")]
+text = "Where am I? "
+shakeIntensity = 1
+
+[node name="TextPosition" parent="FirstPuzzle/TextTrigger/ShowTextAction" index="0"]
+position = Vector2(137, -44)
+
+[node name="TextTrigger2" parent="FirstPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
+position = Vector2(2175, 502)
+action = NodePath("ShowTextAction")
+
+[node name="ShowTextAction" parent="FirstPuzzle/TextTrigger2" instance=ExtResource("14_gn8l5")]
+text = "Help!"
+shakeIntensity = 2
+
+[node name="TextPosition" parent="FirstPuzzle/TextTrigger2/ShowTextAction" index="0"]
+position = Vector2(72, -142)
+
+[node name="TextTrigger3" parent="FirstPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
+position = Vector2(1970, 506)
+action = NodePath("ShowTextAction")
+
+[node name="ShowTextAction" parent="FirstPuzzle/TextTrigger3" instance=ExtResource("14_gn8l5")]
+text = "Is this the past?"
+shakeIntensity = 2
+
+[node name="TextPosition" parent="FirstPuzzle/TextTrigger3/ShowTextAction" index="0"]
+position = Vector2(104, -118)
+
+[node name="TextTrigger4" parent="FirstPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
+position = Vector2(3181, 518)
+action = NodePath("showThoughtAction")
+
+[node name="showThoughtAction" parent="FirstPuzzle/TextTrigger4" node_paths=PackedStringArray("character") instance=ExtResource("8_gn8l5")]
+character = NodePath("../../../Character")
+text = "Who did this?"
+showItOnce = true
+
+[node name="TextTrigger5" parent="FirstPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
+position = Vector2(2073, 506)
+action = NodePath("ShowTextAction")
+
+[node name="ShowTextAction" parent="FirstPuzzle/TextTrigger5" instance=ExtResource("14_gn8l5")]
+text = "CRY"
+shakeIntensity = 3
+
+[node name="TextPosition" parent="FirstPuzzle/TextTrigger5/ShowTextAction" index="0"]
+position = Vector2(65, 193)
+
+[node name="TextTrigger6" parent="FirstPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
+position = Vector2(2288, 504)
+action = NodePath("ShowTextAction")
+
+[node name="ShowTextAction" parent="FirstPuzzle/TextTrigger6" instance=ExtResource("14_gn8l5")]
+text = "HATE"
+shakeIntensity = 4
+
+[node name="TextPosition" parent="FirstPuzzle/TextTrigger6/ShowTextAction" index="0"]
+position = Vector2(145, 179)
+
+[node name="TextTrigger7" parent="FirstPuzzle" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
+position = Vector2(2549, 505)
+action = NodePath("ShowTextAction")
+
+[node name="ShowTextAction" parent="FirstPuzzle/TextTrigger7" instance=ExtResource("14_gn8l5")]
+text = "FEAR"
+shakeIntensity = 4
+
+[node name="TextPosition" parent="FirstPuzzle/TextTrigger7/ShowTextAction" index="0"]
+position = Vector2(145, 179)
 
 [node name="SecondPuzzle" type="Node2D" parent="."]
 
 [node name="End" type="Node2D" parent="."]
 
 [node name="Character" parent="." instance=ExtResource("1_2dftf")]
-position = Vector2(2625, 584)
+position = Vector2(1866, 580)
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 offset = Vector2(0, -150)
@@ -279,4 +356,18 @@ metadata/_edit_lock_ = true
 layout_mode = 1
 metadata/_edit_lock_ = true
 
+[node name="EventList" parent="Character/Camera2D/UI" instance=ExtResource("23_jyqkj")]
+layout_mode = 1
+offset_left = 15.0
+offset_top = 33.0
+offset_right = 15.0
+offset_bottom = 33.0
+metadata/_edit_lock_ = true
+
 [editable path="ActionTriggerArea/ShowTextAction"]
+[editable path="FirstPuzzle/TextTrigger/ShowTextAction"]
+[editable path="FirstPuzzle/TextTrigger2/ShowTextAction"]
+[editable path="FirstPuzzle/TextTrigger3/ShowTextAction"]
+[editable path="FirstPuzzle/TextTrigger5/ShowTextAction"]
+[editable path="FirstPuzzle/TextTrigger6/ShowTextAction"]
+[editable path="FirstPuzzle/TextTrigger7/ShowTextAction"]

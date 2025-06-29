@@ -6,3 +6,4 @@
 [node name="showThoughtAction" instance=ExtResource("1_hsts8")]
 script = ExtResource("2_dxcew")
 text = ""
+showItOnce = true

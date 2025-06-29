@@ -9,3 +9,4 @@ text = ""
 shakeIntensity = 0
 
 [node name="TextPosition" type="Marker2D" parent="." index="0"]
+position = Vector2(39, 0)
