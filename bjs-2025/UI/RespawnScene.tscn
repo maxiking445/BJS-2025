@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://cevquwdd4ffu1"]
+
+[ext_resource type="Script" uid="uid://dh4l3p21v4tqd" path="res://UI/respawn_scene.gd" id="1_u5sl0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_taqgx"]
+font_size = 35
+font_color = Color(0.326428, 7.91029e-05, 0.330812, 1)
+outline_size = 4
+
+[node name="RespawnScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u5sl0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 649.0
+color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+
+[node name="Texts" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -109.0
+offset_right = 96.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_taqgx")
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 298.0
+offset_right = 608.0
+offset_bottom = 329.0
+text = "RESTART"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

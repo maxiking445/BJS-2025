@@ -29,9 +29,14 @@ offset_bottom = 343.0
 layout_mode = 2
 text = "RESUME"
 
+[node name="RespawnButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Respawn"
+
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "LEAVE PRISON"
 
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/RespawnButton" to="." method="_on_respawn_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

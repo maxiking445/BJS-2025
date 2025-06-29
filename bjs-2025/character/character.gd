@@ -24,8 +24,28 @@ signal die
 func _ready() -> void:
 	collisionArea = $RightArea
 	pullArea = $RightPullAreaa
-	createThought("Where am i?")
-
+	if Util.respawnCount == 0:
+		createThought("Where am i?")
+	if Util.respawnCount == 1:
+		createThought("I was here before - I have to find the end")
+	if Util.respawnCount == 2:
+		createThought("How can I escape?")
+	if Util.respawnCount == 3:
+		createThought("Stop it please!")
+	if Util.respawnCount == 4:
+		createThought("Help!")
+	if Util.respawnCount == 5:
+		createThought("Is there someone?")
+	if Util.respawnCount == 6:
+		createThought("Please!")
+	if Util.respawnCount == 7:
+		createThought("Not again...")
+	if Util.respawnCount == 8:
+		createThought("Nothing is real")
+	if Util.respawnCount == 9:
+		createThought("I am trapped")
+	if Util.respawnCount > 9:
+		createThought("trapped...")
 func createThought(text: String, showOnlyOneText= true):
 	TextManager.createThought($TextPosition,text, showOnlyOneText)
 

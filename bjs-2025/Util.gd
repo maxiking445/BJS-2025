@@ -3,6 +3,7 @@ extends Node
 var currentPlayer: Character = null
 var isInReplayMode= false
 var time_passed := 0.0
+var respawnCount: int = 0
 
 func _ready() -> void:
 	SignalManager.reverseTimer.connect(updateCurrentTime)
