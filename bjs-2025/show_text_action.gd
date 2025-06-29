@@ -1,6 +1,9 @@
 extends Action
 
 @export var text: String = ""
+var actionPlayed: bool = false
 
 func doAction():
-	TextManager.createNormalText($Marker2D,text)
+	if !actionPlayed:
+		TextManager.createNormalText($TextPosition,text)
+		actionPlayed = true

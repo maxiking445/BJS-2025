@@ -25,7 +25,6 @@ func createNormalText(parent: Node2D, text: String):
 	instance.text_display = Enums.TEXT_DISPLAY.NORMAL
 	instance.shake_intensity = 1
 	parent.add_child(instance)
-	lastTextCreated = instance	
 
 func createRandomText(parent: Node2D, text: String):
 	var instance: ShakyText = text_scene.instantiate()
@@ -35,7 +34,6 @@ func createRandomText(parent: Node2D, text: String):
 	instance.text_display = Enums.TEXT_DISPLAY.RANDOM
 	instance.shake_intensity = 1
 	parent.add_child(instance)
-	lastTextCreated = instance	
 
 
 func createBackwardText(parent: Node2D, text: String):
@@ -46,7 +44,6 @@ func createBackwardText(parent: Node2D, text: String):
 	instance.text_display = Enums.TEXT_DISPLAY.BACKWARDS
 	instance.shake_intensity = 1
 	parent.add_child(instance)
-	lastTextCreated = instance	
 		
 func checkIfATextIsAlreadyDisplayed()-> bool:
 	if is_instance_valid(lastTextCreated):
