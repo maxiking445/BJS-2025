@@ -21,3 +21,4 @@ offset_top = 19.0
 offset_right = -11.0
 offset_bottom = 47.0
 grow_horizontal = 0
+text = "TIME"

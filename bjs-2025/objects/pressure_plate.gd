@@ -5,6 +5,7 @@ class_name PressurePlate
 @export var sink_duration = 0.1       
 @export var riseTimer : float = 2
 @export var keepPressed: bool
+@export var sendPressedEvent: bool = true
    
 var is_pressed = false
 var original_position = Vector2.ZERO
@@ -23,11 +24,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		sink()
 
 func sink() -> void:
+	is_pressed = true
 	var tween = create_tween()
 	tween.tween_property(self, "position", original_position + Vector2(0, sink_amount), sink_duration)
 	if !keepPressed:
 		$RiseTImer.start()
 	pressed.emit()
+	if sendPressedEvent:
+		SignalManager.pressedButton.emit(Util.getCurrentTime(), "PressurePlate_Entrance")
 
 func rise() -> void:
 	var tween = create_tween()

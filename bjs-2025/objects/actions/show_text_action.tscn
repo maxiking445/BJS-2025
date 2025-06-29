@@ -6,5 +6,6 @@
 [node name="ShowTextAction" instance=ExtResource("1_tgldu")]
 script = ExtResource("2_40vt8")
 text = ""
+shakeIntensity = 0
 
 [node name="TextPosition" type="Marker2D" parent="." index="0"]

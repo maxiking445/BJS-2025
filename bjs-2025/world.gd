@@ -5,6 +5,7 @@ extends Node2D
 func _ready() -> void:
 	if !debugMode:
 		$ColorRect.show()
+		$Bedroom/ColorRect.show()
 	fadeOutCanvasLayer()
 	SoundManager.fadeOutSound($HeartbeatSound, 40)
 
