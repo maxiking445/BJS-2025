@@ -25,7 +25,7 @@ layout_mode = 2
 
 [node name="TextLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "TEST"
+text = "TEXT"
 label_settings = SubResource("LabelSettings_3a6px")
 
 [node name="TimeLabel" type="Label" parent="HBoxContainer/VBoxContainer"]

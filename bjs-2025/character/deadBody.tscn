@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d03aojr1htnj6"]
+
+[ext_resource type="Texture2D" uid="uid://n8r2fulbqt5l" path="res://assets/Idel Animation 48x48.png" id="1_8kbgv"]
+[ext_resource type="Script" uid="uid://bgkr4i7if83ek" path="res://character/dead_body.gd" id="2_08r0b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kbgv"]
+
+[node name="DeadBody" type="Sprite2D"]
+self_modulate = Color(0.564862, 0.3869, 0.135391, 1)
+rotation = 1.47076
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_8kbgv")
+hframes = 10
+frame = 1
+script = ExtResource("2_08r0b")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8kbgv")

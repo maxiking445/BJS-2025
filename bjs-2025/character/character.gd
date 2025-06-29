@@ -48,6 +48,7 @@ func _ready() -> void:
 		createThought("I am trapped")
 	if Util.respawnCount > 9:
 		createThought("trapped...")
+		
 func createThought(text: String, showOnlyOneText= true):
 	TextManager.createThought($TextPosition,text, showOnlyOneText)
 

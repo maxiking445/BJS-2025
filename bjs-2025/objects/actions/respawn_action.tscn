@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://wi5476i2ssa7"]
+
+[ext_resource type="PackedScene" uid="uid://cuy3t504v15k1" path="res://objects/actions/action.tscn" id="1_lnkxr"]
+[ext_resource type="Script" uid="uid://bcdioq2xpt1ta" path="res://objects/actions/respawn_action.gd" id="2_jufe1"]
+
+[node name="RespawnAction" instance=ExtResource("1_lnkxr")]
+script = ExtResource("2_jufe1")

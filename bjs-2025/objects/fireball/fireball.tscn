@@ -440,7 +440,7 @@ script = ExtResource("1_5tmjs")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.11249, 1.64499)
 sprite_frames = SubResource("SpriteFrames_76hgg")
-frame_progress = 0.523537
+frame_progress = 0.168414
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

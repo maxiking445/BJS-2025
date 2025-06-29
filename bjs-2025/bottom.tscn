@@ -1,0 +1,131 @@
+[gd_scene load_steps=9 format=3 uid="uid://cghap4aucfdtb"]
+
+[ext_resource type="Shader" uid="uid://b4d12ycx3m21c" path="res://water.gdshader" id="1_23svj"]
+[ext_resource type="Script" uid="uid://dga6bn265qvc1" path="res://bottom.gd" id="1_r5bjc"]
+[ext_resource type="Texture2D" uid="uid://bam35ww8kgqdp" path="res://assets/FLoor.png" id="2_r5bjc"]
+[ext_resource type="PackedScene" uid="uid://d03aojr1htnj6" path="res://character/deadBody.tscn" id="4_m4tab"]
+[ext_resource type="PackedScene" uid="uid://bgelv038mujki" path="res://objects/ActionTriggerArea.tscn" id="5_bblhy"]
+[ext_resource type="PackedScene" uid="uid://wi5476i2ssa7" path="res://objects/actions/respawn_action.tscn" id="6_eygmt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bblhy"]
+shader = ExtResource("1_23svj")
+shader_parameter/water_color = Color(0.287266, 0, 0.0926107, 1)
+shader_parameter/wave_speed = 5.0
+shader_parameter/wave_amplitude_x = 89.02
+shader_parameter/wave_amplitude_y = 0.02
+shader_parameter/wave_length = 126.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4tab"]
+size = Vector2(211, 124)
+
+[node name="Bottom" type="Node2D"]
+script = ExtResource("1_r5bjc")
+
+[node name="Water" type="TextureRect" parent="."]
+modulate = Color(0.560323, 0.0444034, 0.100416, 1)
+material = SubResource("ShaderMaterial_bblhy")
+offset_left = -315.0
+offset_top = 578.0
+offset_right = 6566.0
+offset_bottom = 679.0
+texture = ExtResource("2_r5bjc")
+
+[node name="Bodys" type="Node2D" parent="."]
+position = Vector2(-2, 0)
+
+[node name="Sprite2D" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(230.277, 564.277)
+
+[node name="Sprite2D2" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(3113.28, 579.277)
+
+[node name="Sprite2D3" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(1600.55, 571.554)
+
+[node name="Sprite2D4" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(4420.56, 586.554)
+
+[node name="Sprite2D5" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(1106.56, 564.554)
+
+[node name="Sprite2D6" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(3847.56, 579.554)
+
+[node name="Sprite2D7" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(2538.83, 571.831)
+
+[node name="Sprite2D8" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(5344.83, 586.831)
+
+[node name="Sprite2D9" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(509.557, 610.554)
+
+[node name="Sprite2D10" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(3328.55, 625.554)
+
+[node name="Sprite2D11" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(2007.83, 617.831)
+
+[node name="Sprite2D12" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(4794.83, 632.831)
+
+[node name="Sprite2D13" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(1354.83, 610.831)
+
+[node name="Sprite2D14" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(4044.83, 625.831)
+
+[node name="Sprite2D15" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(2771.11, 618.107)
+
+[node name="Sprite2D16" parent="Bodys" instance=ExtResource("4_m4tab")]
+position = Vector2(5509.11, 633.107)
+
+[node name="Spawns" type="Node2D" parent="."]
+position = Vector2(5443, 13)
+
+[node name="Spawn1" type="Marker2D" parent="Spawns"]
+position = Vector2(1101, 583)
+
+[node name="Spawn2" type="Marker2D" parent="Spawns"]
+position = Vector2(1102, 597)
+
+[node name="Spawn3" type="Marker2D" parent="Spawns"]
+position = Vector2(1103, 605)
+
+[node name="Spawn4" type="Marker2D" parent="Spawns"]
+position = Vector2(1101, 617)
+
+[node name="Spawn5" type="Marker2D" parent="Spawns"]
+position = Vector2(1102, 590)
+
+[node name="Spawn6" type="Marker2D" parent="Spawns"]
+position = Vector2(1103, 604)
+
+[node name="Spawn7" type="Marker2D" parent="Spawns"]
+position = Vector2(1104, 625)
+
+[node name="Spawn8" type="Marker2D" parent="Spawns"]
+position = Vector2(1103, 636)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-418, 627)
+shape = SubResource("RectangleShape2D_m4tab")
+
+[node name="ActionTriggerArea" parent="." node_paths=PackedStringArray("action") instance=ExtResource("5_bblhy")]
+position = Vector2(-524, 507)
+action = NodePath("RespawnAction")
+length = 1000
+
+[node name="RespawnAction" parent="ActionTriggerArea" instance=ExtResource("6_eygmt")]
+position = Vector2(-491, 547)
+scale = Vector2(135.673, 1.08832)
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
