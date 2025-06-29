@@ -8,6 +8,8 @@ func  _ready() -> void:
 	recordingManager = $"../../RecordingManager"
 
 func doAction():
+	$AudioStreamPlayer2D.play()
+	SoundManager.fadeOutSound($AudioStreamPlayer2D, 5)
 	recordingManager.reverseOrder()
 	var instance: GhostCharacter = ghost_scene.instantiate()
 	instance.position =  $"../../Character".position

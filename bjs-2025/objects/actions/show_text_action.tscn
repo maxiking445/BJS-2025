@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://crld3xrax3fn7"]
+
+[ext_resource type="PackedScene" uid="uid://cuy3t504v15k1" path="res://objects/actions/action.tscn" id="1_tgldu"]
+[ext_resource type="Script" uid="uid://cudj5qr76k2wu" path="res://show_text_action.gd" id="2_40vt8"]
+
+[node name="ShowTextAction" instance=ExtResource("1_tgldu")]
+script = ExtResource("2_40vt8")
+text = ""
+
+[node name="TextPosition" type="Marker2D" parent="." index="0"]

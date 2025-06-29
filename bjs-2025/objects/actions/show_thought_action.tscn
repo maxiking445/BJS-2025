@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ovuy72356yjw"]
+
+[ext_resource type="PackedScene" uid="uid://cuy3t504v15k1" path="res://objects/actions/action.tscn" id="1_hsts8"]
+[ext_resource type="Script" uid="uid://bfka0upm3ga41" path="res://objects/actions/show_thought_action.gd" id="2_dxcew"]
+
+[node name="showThoughtAction" instance=ExtResource("1_hsts8")]
+script = ExtResource("2_dxcew")
+text = ""

@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dowypbs3jl17n"]
+[gd_scene load_steps=4 format=3 uid="uid://dowypbs3jl17n"]
 
 [ext_resource type="PackedScene" uid="uid://cuy3t504v15k1" path="res://objects/actions/action.tscn" id="1_4d2ph"]
 [ext_resource type="Script" uid="uid://dud1dvef7ygmm" path="res://objects/actions/startReplayAction.gd" id="2_dnh2j"]
+[ext_resource type="AudioStream" uid="uid://cpukxxds7s4r3" path="res://sounds/timer.mp3" id="3_0bhdq"]
 
 [node name="StartReplayAction" instance=ExtResource("1_4d2ph")]
 script = ExtResource("2_dnh2j")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="0"]
+stream = ExtResource("3_0bhdq")
+volume_db = 24.0

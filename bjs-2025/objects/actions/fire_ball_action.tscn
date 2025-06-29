@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cugcp0e0lygk2"]
+
+[ext_resource type="PackedScene" uid="uid://cuy3t504v15k1" path="res://objects/actions/action.tscn" id="1_63d3i"]
+[ext_resource type="Script" uid="uid://b71qswvvqyrkh" path="res://objects/actions/fire_ball_action.gd" id="2_puwh2"]
+
+[node name="FireBallAction" instance=ExtResource("1_63d3i")]
+script = ExtResource("2_puwh2")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://djxft2kh8uotj"]
+
+[ext_resource type="Script" uid="uid://c0xhvvinbrd0f" path="res://UI/game_menue.gd" id="1_nq66s"]
+
+[node name="GameMenue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nq66s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 3
+modulate = Color(1, 1, 1, 0.0470588)
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 277.0
+offset_right = 602.0
+offset_bottom = 343.0
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "LEAVE PRISON"
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

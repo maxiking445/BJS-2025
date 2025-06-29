@@ -16,7 +16,37 @@ func createThought(parent: Node2D, text: String, showOnlyOneText: bool = true):
 	parent.add_child(instance)
 	lastTextCreated = instance
 	
-	
+
+func createNormalText(parent: Node2D, text: String):
+	var instance: ShakyText = text_scene.instantiate()
+	instance.FlyTextIn = true
+	instance.lifeTime = 5
+	instance.text = text
+	instance.text_display = Enums.TEXT_DISPLAY.NORMAL
+	instance.shake_intensity = 1
+	parent.add_child(instance)
+	lastTextCreated = instance	
+
+func createRandomText(parent: Node2D, text: String):
+	var instance: ShakyText = text_scene.instantiate()
+	instance.FlyTextIn = true
+	instance.lifeTime = 8
+	instance.text = text
+	instance.text_display = Enums.TEXT_DISPLAY.RANDOM
+	instance.shake_intensity = 1
+	parent.add_child(instance)
+	lastTextCreated = instance	
+
+
+func createBackwardText(parent: Node2D, text: String):
+	var instance: ShakyText = text_scene.instantiate()
+	instance.FlyTextIn = true
+	instance.lifeTime = 5
+	instance.text = text
+	instance.text_display = Enums.TEXT_DISPLAY.BACKWARDS
+	instance.shake_intensity = 1
+	parent.add_child(instance)
+	lastTextCreated = instance	
 		
 func checkIfATextIsAlreadyDisplayed()-> bool:
 	if is_instance_valid(lastTextCreated):

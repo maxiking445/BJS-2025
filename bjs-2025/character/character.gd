@@ -19,6 +19,8 @@ var pullpoint: Marker2D = null
 var currentFace: FACE = FACE.RIGHT
 var isPushing= false
 
+signal die
+
 func _ready() -> void:
 	collisionArea = $RightArea
 	pullArea = $RightPullAreaa
