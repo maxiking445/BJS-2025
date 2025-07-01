@@ -64,8 +64,6 @@ func getPositionByName(data: Array, name: String) -> Vector2:
 	for entry in data:
 		if name in entry:
 			if entry[name] is String:
-				print(entry[name])
-				print("parsed", parse_vector2(entry[name]))
 				return parse_vector2(entry[name])
 			if entry[name] is Vector2:
 				return entry[name]

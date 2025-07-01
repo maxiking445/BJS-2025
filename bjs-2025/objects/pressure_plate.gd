@@ -24,7 +24,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		sink()
 
 func sink() -> void:
-	is_pressed = true
 	var tween = create_tween()
 	tween.tween_property(self, "position", original_position + Vector2(0, sink_amount), sink_duration)
 	if !keepPressed:
@@ -59,8 +58,10 @@ func isSomethingOnButton()-> bool:
 func _on_flip() -> void:
 	if is_pressed:
 		is_pressed = false
+		print("RISE")
 		rise()
 	else:
+		print("SINK")
 		is_pressed = true
 		sink()
 		
@@ -68,6 +69,7 @@ func replay(isPressed: bool):
 	if self.is_pressed == isPressed:
 		return
 	else:
+		print("FLIP", isPressed )
 		flip.emit()
 	
 	

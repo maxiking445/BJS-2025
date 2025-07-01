@@ -15,12 +15,11 @@ func _input(event: InputEvent) -> void:
 		if !isMenueOpen():
 			var menue_instance = menue_scene.instantiate()
 			$Character/Camera2D/UI.add_child(menue_instance)
-			var dict: Array[Dictionary] = []
-			for record: ReplayObject in $RecordingManager.recording:
-				dict.append(record.to_dict($Character, get_tree()))
-			saveReplay(dict)
-			get_tree().paused = true
-
+			#var dict: Array[Dictionary] = []
+			#for record: ReplayObject in $RecordingManager.recording:
+				#dict.append(record.to_dict($Character, get_tree()))
+			#saveReplay(dict)
+			
 @export var saveFolder = "/REPLAYDATA"
 @export var saveGameRootFolder = OS.get_environment("HOME")
 func saveReplay(replay_data):
