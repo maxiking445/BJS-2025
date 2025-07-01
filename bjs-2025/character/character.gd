@@ -23,7 +23,12 @@ var isPushing= false
 @onready var respawn_scene = load("res://UI/RespawnScene.tscn")
 signal die
 
+
+
 func _ready() -> void:
+	var tween = create_tween()
+	rotation = deg_to_rad(-90.0) 
+	tween.tween_property(self, "rotation", deg_to_rad(0.0), 1.0)
 	var audioPlayer: AudioStreamPlayer = 	SoundManager.playHeartbeat(self)
 	SoundManager.fadeOutSound(audioPlayer, 30)
 	collisionArea = $RightArea

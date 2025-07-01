@@ -31,7 +31,6 @@ func _on_spawn_timer_timeout() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-		print("FREE THEM")
 		area.queue_free()
 
 

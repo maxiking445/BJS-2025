@@ -23,6 +23,11 @@ func playWhispers(parent: Node)-> AudioStreamPlayer:
 	play_sound("whispers", audioplayer)
 	return audioplayer
 
+func playTimer(parent: Node)-> AudioStreamPlayer:
+	var audioplayer = createAudioPlayer(parent)
+	play_sound("timer", audioplayer)
+	return audioplayer
+
 func  createAudioPlayer(parent: Node):
 	var audio_player = AudioStreamPlayer.new()
 	parent.add_child(audio_player)
