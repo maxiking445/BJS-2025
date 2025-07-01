@@ -7,6 +7,7 @@ class_name PressurePlate
 @export var keepPressed: bool
 @export var sendPressedEvent: bool = true
 @export var action: Action = null
+@export var ignoreReplay: bool = false
 var is_pressed = false
 var original_position = Vector2.ZERO
 
@@ -58,18 +59,15 @@ func isSomethingOnButton()-> bool:
 func _on_flip() -> void:
 	if is_pressed:
 		is_pressed = false
-		print("RISE")
 		rise()
 	else:
-		print("SINK")
 		is_pressed = true
 		sink()
 		
 func replay(isPressed: bool):
-	if self.is_pressed == isPressed:
+	if self.is_pressed == isPressed || ignoreReplay:
 		return
 	else:
-		print("FLIP", isPressed )
 		flip.emit()
 	
 	

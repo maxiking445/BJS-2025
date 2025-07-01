@@ -1,5 +1,6 @@
 @tool
 extends Control
+class_name  EventItem
 
 @export var text: String = "TEXT"
 @export var time: String = "TIME"

@@ -7,5 +7,5 @@ extends Action
 func doAction():
 	if !isPressed:
 		isPressed = true
-		pressurePlate.sink()
+		pressurePlate._on_flip()
 		pressurePlate.sendPressedEvent = false
