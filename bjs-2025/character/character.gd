@@ -24,6 +24,8 @@ var isPushing= false
 signal die
 
 func _ready() -> void:
+	var audioPlayer: AudioStreamPlayer = 	SoundManager.playHeartbeat(self)
+	SoundManager.fadeOutSound(audioPlayer, 30)
 	collisionArea = $RightArea
 	pullArea = $RightPullAreaa
 	if Util.respawnCount == 0:

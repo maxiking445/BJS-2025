@@ -8,7 +8,6 @@ func _ready() -> void:
 		$ColorRect.show()
 		$Bedroom/ColorRect.show()
 	fadeOutCanvasLayer()
-	SoundManager.fadeOutSound($HeartbeatSound, 40)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("MENUE"):

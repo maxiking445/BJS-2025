@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://pmrec0xfxyfs"]
+[gd_scene load_steps=29 format=4 uid="uid://pmrec0xfxyfs"]
 
 [ext_resource type="PackedScene" uid="uid://dvtvx4gd58y64" path="res://character/character.tscn" id="1_2dftf"]
 [ext_resource type="PackedScene" uid="uid://b3rjacehncklw" path="res://RecordingManager.tscn" id="1_bah7m"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dowypbs3jl17n" path="res://objects/actions/startReplayAction.tscn" id="6_wygdx"]
 [ext_resource type="PackedScene" uid="uid://ovuy72356yjw" path="res://objects/actions/show_thought_action.tscn" id="8_gn8l5"]
 [ext_resource type="PackedScene" uid="uid://bh6vay1cp814b" path="res://UI/time.tscn" id="9_fv4w7"]
-[ext_resource type="AudioStream" uid="uid://darqh8slm81kn" path="res://sounds/heartbeat.mp3" id="11_kva58"]
 [ext_resource type="PackedScene" uid="uid://crdcawn3qfwjl" path="res://objects/fireball/fireball.tscn" id="12_f5c0m"]
 [ext_resource type="PackedScene" uid="uid://bgelv038mujki" path="res://objects/ActionTriggerArea.tscn" id="13_ee7l0"]
 [ext_resource type="PackedScene" uid="uid://crld3xrax3fn7" path="res://objects/actions/show_text_action.tscn" id="14_gn8l5"]
@@ -175,12 +174,6 @@ visible = false
 offset_right = 2474.0
 offset_bottom = 1649.0
 color = Color(0, 0, 0, 1)
-
-[node name="HeartbeatSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_kva58")
-volume_db = 24.0
-autoplay = true
-parameters/looping = true
 
 [node name="ActionTriggerArea" parent="." node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
 position = Vector2(1225, 440)
@@ -522,8 +515,11 @@ position = Vector2(342, -333)
 
 [node name="End" type="Node2D" parent="."]
 
+[node name="Bottom" parent="." instance=ExtResource("26_d7dfr")]
+position = Vector2(485, 1956)
+
 [node name="Character" parent="." instance=ExtResource("1_2dftf")]
-position = Vector2(2637, 903)
+position = Vector2(3749, 449)
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 offset = Vector2(0, -150)
@@ -553,9 +549,6 @@ offset_top = 33.0
 offset_right = 15.0
 offset_bottom = 33.0
 metadata/_edit_lock_ = true
-
-[node name="Bottom" parent="." instance=ExtResource("26_d7dfr")]
-position = Vector2(485, 1956)
 
 [editable path="ActionTriggerArea/ShowTextAction"]
 [editable path="FirstPuzzle/TextTrigger/ShowTextAction"]

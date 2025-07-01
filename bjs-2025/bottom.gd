@@ -33,3 +33,11 @@ func _on_spawn_timer_timeout() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 		print("FREE THEM")
 		area.queue_free()
+
+
+func _on_respawn_timer_timeout() -> void:
+	$RespawenArea/RespawnAction.doAction()
+
+
+func _on_respawen_area_body_entered(body: Node2D) -> void:
+	$RespawenArea/RespawnTimer.start()

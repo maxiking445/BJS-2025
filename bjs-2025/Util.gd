@@ -24,3 +24,8 @@ func format_time(seconds: float) -> String:
 	var secs = int(seconds) % 60
 	var millis = int((seconds - int(seconds)) * 100)
 	return "%02d:%02d.%02d" % [mins, secs, millis]
+
+
+func getUINode()-> Control:
+	var world = get_tree().root.get_node("World")
+	return world.get_node("Character").get_node("Camera2D").get_node("UI")

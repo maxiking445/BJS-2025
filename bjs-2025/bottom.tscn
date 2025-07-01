@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://dga6bn265qvc1" path="res://bottom.gd" id="1_r5bjc"]
 [ext_resource type="Texture2D" uid="uid://bam35ww8kgqdp" path="res://assets/FLoor.png" id="2_r5bjc"]
 [ext_resource type="PackedScene" uid="uid://d03aojr1htnj6" path="res://character/deadBody.tscn" id="4_m4tab"]
-[ext_resource type="PackedScene" uid="uid://bgelv038mujki" path="res://objects/ActionTriggerArea.tscn" id="5_bblhy"]
 [ext_resource type="PackedScene" uid="uid://wi5476i2ssa7" path="res://objects/actions/respawn_action.tscn" id="6_eygmt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bblhy"]
@@ -17,6 +16,9 @@ shader_parameter/wave_length = 126.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4tab"]
 size = Vector2(211, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bblhy"]
+size = Vector2(7056.5, 92)
 
 [node name="Bottom" type="Node2D"]
 script = ExtResource("1_r5bjc")
@@ -117,15 +119,22 @@ autostart = true
 position = Vector2(-418, 627)
 shape = SubResource("RectangleShape2D_m4tab")
 
-[node name="ActionTriggerArea" parent="." node_paths=PackedStringArray("action") instance=ExtResource("5_bblhy")]
-position = Vector2(-524, 507)
-action = NodePath("RespawnAction")
-length = 1000
+[node name="RespawenArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
 
-[node name="RespawnAction" parent="ActionTriggerArea" instance=ExtResource("6_eygmt")]
-position = Vector2(-491, 547)
-scale = Vector2(135.673, 1.08832)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawenArea"]
+position = Vector2(3025.75, 538)
+shape = SubResource("RectangleShape2D_bblhy")
+
+[node name="RespawnTimer" type="Timer" parent="RespawenArea"]
+wait_time = 5.0
+one_shot = true
+
+[node name="RespawnAction" parent="RespawenArea" instance=ExtResource("6_eygmt")]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="RespawenArea" to="." method="_on_respawen_area_body_entered"]
+[connection signal="timeout" from="RespawenArea/RespawnTimer" to="." method="_on_respawn_timer_timeout"]

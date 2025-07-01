@@ -3,7 +3,9 @@ extends Control
 
 var words = ["HATE", "FREE", "HELP", "DESIRE", "DREAM", "FLEE", "GET OUT", "HORROR", "AWAY", "ALONE", "FEAR", "DARK", "WHERE", "HOPE"]
 
-
+func _ready() -> void:
+	SoundManager.playWhispers($".")
+	
 func _process(delta: float) -> void:
 	if $Texts.get_child_count() < 30:
 		spawnRandomText()
