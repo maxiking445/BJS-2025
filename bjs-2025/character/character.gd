@@ -107,6 +107,7 @@ func _physics_process(delta):
 		isPushing = false
 		if pushedObject:
 			isPushing = true
+			
 			var direction = (pushedObject.global_position - global_position).normalized()
 			direction.y = 0 
 			direction = direction.normalized()  
