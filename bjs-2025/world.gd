@@ -7,6 +7,8 @@ func _ready() -> void:
 	if !debugMode:
 		$ColorRect.show()
 		$Bedroom/ColorRect.show()
+		$PistolLayer.hide()
+		
 	fadeOutCanvasLayer()
 	Util.time_passed = 7
 
@@ -23,6 +25,8 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if $RecordingManager.replayCount == 2:
 		$PistolLayer.show()
+	if $RecordingManager.replayCount == 1:
+		$Bedroom/ColorRect.hide()
 			
 @export var saveFolder = "/REPLAYDATA"
 @export var saveGameRootFolder = OS.get_environment("HOME")
