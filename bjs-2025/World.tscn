@@ -141,8 +141,9 @@ sources/1 = SubResource("TileSetAtlasSource_d7dfr")
 [node name="World" type="Node2D"]
 script = ExtResource("1_fvag4")
 
-[node name="GhostDistanceChecker" type="Node" parent="."]
+[node name="GhostDistanceChecker" type="Node" parent="." node_paths=PackedStringArray("action")]
 script = ExtResource("2_d7dfr")
+action = NodePath("RespawnAction")
 
 [node name="RespawnAction" parent="GhostDistanceChecker" instance=ExtResource("3_c2gv2")]
 
@@ -156,7 +157,7 @@ tile_map_data = PackedByteArray("AAAAAAkAAAACAAEAAAABAAkAAAACAAAAAAACAAkAAAADAAA
 tile_set = SubResource("TileSet_2dftf")
 
 [node name="Lever" parent="." node_paths=PackedStringArray("action") instance=ExtResource("4_js7pq")]
-position = Vector2(3946, 554)
+position = Vector2(385, 484)
 action = NodePath("StartReplayAction")
 
 [node name="LeverTriggerArea" parent="Lever" node_paths=PackedStringArray("action") instance=ExtResource("13_ee7l0")]
@@ -539,7 +540,7 @@ position = Vector2(342, -333)
 position = Vector2(485, 1956)
 
 [node name="Character" parent="." instance=ExtResource("1_2dftf")]
-position = Vector2(2726, 535)
+position = Vector2(179, 496)
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 offset = Vector2(0, -150)

@@ -8,7 +8,7 @@ func _ready() -> void:
 		$ColorRect.show()
 		$Bedroom/ColorRect.show()
 	fadeOutCanvasLayer()
-	Util.time_passed = 6
+	Util.time_passed = 7
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("MENUE"):

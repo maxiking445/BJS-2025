@@ -6,9 +6,11 @@ var recording: Array[ReplayObject] = []
 
 @export var isRecording = true
 @export var isReplaying = false
+var isReversing = false
 @onready var character:Character = $"../Character"
 @onready var ghostChar:GhostCharacter = null
 var current_frame := 0	
+var replayCount = 0
 
 func _ready() -> void:
 	var file = FileAccess.open("res://assets/data.json", FileAccess.READ)
@@ -54,11 +56,17 @@ func replay(delta):
 			var plateIsPressed = getBoolByName(frame.pressurePlates,object.name )
 			object.replay(plateIsPressed) 
 		current_frame += 1
+		print(current_frame)
 	else:
 		SignalManager.reverseTimer.emit()
-		ghostChar.queue_free()
-		isRecording = true
-		isReplaying = false
+		#ghostChar.queue_free()
+		reverseOrder()
+		current_frame = 0
+		replayCount += 1
+		print("REPLAY", replayCount)
+		isRecording = false
+		isReplaying = true
+
 		
 func getPositionByName(data: Array, name: String) -> Vector2:
 	for entry in data:
