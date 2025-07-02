@@ -13,7 +13,12 @@ func _process(delta: float) -> void:
 			action.doAction()
 		
 
-	
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+
+
+func _on_lever_trigger_area_body_entered(body: Node2D) -> void:
+	canTriggerLever = true
+
+
+func _on_lever_trigger_area_body_exited(body: Node2D) -> void:
 	canTriggerLever = false

@@ -18,7 +18,7 @@ var pullArea: Area2D = null
 var pullpoint: Marker2D = null
 var currentFace: FACE = FACE.RIGHT
 var isPushing= false
-
+var showWeapon= false
 
 @onready var respawn_scene = load("res://UI/RespawnScene.tscn")
 signal die
@@ -59,7 +59,21 @@ func _ready() -> void:
 func createThought(text: String, showOnlyOneText= true):
 	TextManager.createThought($TextPosition,text, showOnlyOneText)
 
+func determineWeapon():
+	if showWeapon:
+		if currentFace == FACE.LEFT:
+			$TextureRectLeft.show()
+			$TextureRectRight.hide()
+		else:
+			$TextureRectLeft.hide()
+			$TextureRectRight.show()
+		
 func _physics_process(delta):
+	determineWeapon()
+	if Input.is_action_just_pressed("ACTION") && showWeapon:
+		SoundManager.playShot(self)
+		print("END")
+		
 	var x_direction := 0
 	if Input.is_action_pressed("LEFT"):
 		currentFace =  FACE.LEFT
@@ -162,6 +176,8 @@ func getTextPosition()-> Marker2D:
 func getCurrentAnimation()-> String:
 	return $AnimatedSprite2D.animation
 
+func addWeapon():
+	showWeapon = true
 	
 
 

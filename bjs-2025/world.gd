@@ -19,6 +19,10 @@ func _input(event: InputEvent) -> void:
 			#for record: ReplayObject in $RecordingManager.recording:
 				#dict.append(record.to_dict($Character, get_tree()))
 			#saveReplay(dict)
+
+func _process(delta: float) -> void:
+	if $RecordingManager.replayCount == 2:
+		$PistolLayer.show()
 			
 @export var saveFolder = "/REPLAYDATA"
 @export var saveGameRootFolder = OS.get_environment("HOME")

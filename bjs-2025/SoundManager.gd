@@ -5,6 +5,7 @@ extends Node
 	"heartbeat": preload("res://sounds/heartbeat.mp3"),
 	"timer": preload( "res://sounds/timer.mp3"),
 	"whispers": preload( "res://sounds/whisper.mp3"),
+	"shot": preload("res://sounds/pistolShot.mp3"),
 }
 
 
@@ -26,6 +27,11 @@ func playWhispers(parent: Node)-> AudioStreamPlayer:
 func playTimer(parent: Node)-> AudioStreamPlayer:
 	var audioplayer = createAudioPlayer(parent)
 	play_sound("timer", audioplayer)
+	return audioplayer
+
+func playShot(parent: Node)-> AudioStreamPlayer:
+	var audioplayer = createAudioPlayer(parent)
+	play_sound("shot", audioplayer)
 	return audioplayer
 
 func  createAudioPlayer(parent: Node):

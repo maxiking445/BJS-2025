@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dvtvx4gd58y64"]
+[gd_scene load_steps=58 format=3 uid="uid://dvtvx4gd58y64"]
 
 [ext_resource type="Script" uid="uid://cgptvapg8lgol" path="res://character/character.gd" id="1_1l1n4"]
 [ext_resource type="Texture2D" uid="uid://n8r2fulbqt5l" path="res://assets/Idel Animation 48x48.png" id="3_tgjim"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dxd7neoinca35" path="res://assets/Push Animation 48x48.png" id="6_qkjfd"]
 [ext_resource type="Texture2D" uid="uid://c4kl1wgge8ba8" path="res://assets/Run Animation 48x48.png" id="7_gx66j"]
 [ext_resource type="Script" uid="uid://0amfc6hc21tq" path="res://character/animated_sprite_2d.gd" id="7_tgjim"]
+[ext_resource type="Texture2D" uid="uid://b0vkaopcdw1uj" path="res://assets/Diana Raptor 4.png" id="8_wy5t8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf0e5"]
 size = Vector2(50, 99)
@@ -405,5 +406,22 @@ animation = &"push"
 frame = 3
 frame_progress = 0.25022
 script = ExtResource("7_tgjim")
+
+[node name="TextureRectRight" type="TextureRect" parent="."]
+visible = false
+offset_left = 11.0
+offset_top = -19.0
+offset_right = 75.0
+offset_bottom = 21.0
+texture = ExtResource("8_wy5t8")
+
+[node name="TextureRectLeft" type="TextureRect" parent="."]
+visible = false
+offset_left = -67.0
+offset_top = -22.0
+offset_right = -3.0
+offset_bottom = 18.0
+texture = ExtResource("8_wy5t8")
+flip_h = true
 
 [connection signal="die" from="." to="." method="_on_die"]
