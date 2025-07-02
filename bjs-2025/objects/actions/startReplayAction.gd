@@ -1,21 +1,22 @@
 extends Action
 class_name SpawnGhostAction
 
-@onready var recordingManager:RecordingManager = $"../../RecordingManager"
+@onready var recordingManager:RecordingManager = $"../../../RecordingManager"
 @onready var ghost_scene = preload("res://character/ghost_character.tscn")
 
 func  _ready() -> void:
-	recordingManager = $"../../RecordingManager"
+	recordingManager = $"../../../RecordingManager"
 
 func doAction():
 	var audioStream = SoundManager.playTimer(self)
 	SoundManager.fadeOutSound(audioStream, 5)
 	recordingManager.reverseOrder()
 	var instance: GhostCharacter = ghost_scene.instantiate()
-	instance.position =  $"../../Character".position
-	$"../..".add_child(instance)
+	instance.position =  $"../../../Character".position
+	$"../../..".add_child(instance)
 	recordingManager.ghostChar = instance
 	recordingManager.isRecording = false
 	recordingManager.isReplaying= true
 	SignalManager.reverseTimer.emit()
+	recordingManager.replayCount = 1
 	

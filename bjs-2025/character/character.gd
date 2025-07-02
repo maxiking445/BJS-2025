@@ -19,13 +19,32 @@ var pullpoint: Marker2D = null
 var currentFace: FACE = FACE.RIGHT
 var isPushing= false
 var showWeapon= false
+@export var endScreen = false
 
 @onready var respawn_scene = load("res://UI/RespawnScene.tscn")
+
 signal die
 
+func playEndScreenThoughts():
+	createThought("What was that?", false)
+	await  get_tree().create_timer(3.0).timeout
+	createThought("I dreamed about a Lever.", false)
+	await  get_tree().create_timer(3.0).timeout
+	createThought("I want to press it!", false)
+	await  get_tree().create_timer(2.0).timeout
+	fadeInCanvasLayer()
 
-
+func fadeInCanvasLayer():
+	var tween = create_tween()
+	tween.tween_property($"../../ColorRect", "modulate:a", 5, 3) # 1 Sekunde ausfaden	
+	tween.connect("finished", Callable(self, "_on_fade_finished"))
+	
+func _on_fade_finished():
+	$"../../Label".show()	
+	
 func _ready() -> void:
+	if endScreen:
+		playEndScreenThoughts()
 	#var tween = create_tween()
 	#rotation = deg_to_rad(-90.0) 
 	#tween.tween_property(self, "rotation", deg_to_rad(0.0), 1.0)
@@ -33,6 +52,8 @@ func _ready() -> void:
 	SoundManager.fadeOutSound(audioPlayer, 30)
 	collisionArea = $RightArea
 	pullArea = $RightPullAreaa
+	if endScreen:
+		return
 	if Util.respawnCount == 0:
 		createThought("Where am i?")
 	if Util.respawnCount == 1:
@@ -72,8 +93,9 @@ func _physics_process(delta):
 	determineWeapon()
 	if Input.is_action_just_pressed("ACTION") && showWeapon:
 		SoundManager.playShot(self)
-		print("END")
-		
+		get_tree().change_scene_to_file("res://EndScene.tscn")
+	if endScreen:
+		return	
 	var x_direction := 0
 	if Input.is_action_pressed("LEFT"):
 		currentFace =  FACE.LEFT

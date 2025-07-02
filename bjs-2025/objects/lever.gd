@@ -2,7 +2,7 @@ extends Node2D
 
 @export var action: Action = null
 
-var canTriggerLever: bool = true
+var canTriggerLever: bool = false
 var leverIsPulled: bool = false
 
 func _process(delta: float) -> void:

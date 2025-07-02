@@ -12,6 +12,4 @@ func doAction():
 	else:
 		displayText = Enums.TEXT_DISPLAY.RANDOM
 		
-	if !actionPlayed:
-		TextManager.createText($TextPosition,text,displayText, shakeIntensity)
-		actionPlayed = true
+	TextManager.createText($TextPosition,text,displayText, shakeIntensity)

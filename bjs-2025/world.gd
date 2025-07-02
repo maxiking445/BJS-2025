@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 			#saveReplay(dict)
 
 func _process(delta: float) -> void:
-	if $RecordingManager.replayCount == 2:
+	if $RecordingManager.replayCount == 3:
 		$PistolLayer.show()
 	if $RecordingManager.replayCount == 1:
 		$Bedroom/ColorRect.hide()
