@@ -1,4 +1,5 @@
-# BJS-2025
+# Re:Loop
+## BJS-2025
 
 Welcome to **BJS-2025**!
 
@@ -17,3 +18,6 @@ The Beginner Game Jam was a great opportunity to learn the basics of game develo
 ## Thanks
 
 A big thank you to the organizers of the Beginner Game Jam and everyone who provided feedback and support!
+
+##
+Link to Itch: https://maxiking445.itch.io/reloop
